@@ -10,14 +10,44 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 5f;
     Vector2 moveInput;
 
+    private bool _isMoving = false;
+
+    public bool IsMoving { get
+        {
+            return _isMoving; 
+        } 
+        private set 
+        { 
+            _isMoving = value; 
+            animator.SetBool("isMoving", value);
+        } 
+    }
+
+    private bool _isRuning = false;
+
+    public bool IsRuning 
+    { 
+        get
+        {
+            return _isRuning; 
+        } 
+        set 
+        { 
+            _isRuning = value; 
+            animator.SetBool("isRuning", value);
+        } 
+    }
+
     Rigidbody2D rb;
+    Animator animator;  
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
-    public bool IsMoving {get; private set; }
+    
 
     // Start is called before the first frame update
     void Start()
