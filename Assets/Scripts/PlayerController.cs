@@ -7,35 +7,85 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    
     public float walkSpeed = 5f;
+    public float runSpeed = 8f;
     Vector2 moveInput;
 
-    private bool _isMoving = false;
-
-    public bool IsMoving { get
+    public float CurrentMoveSpeed
+    {
+        get  
         {
-            return _isMoving; 
-        } 
-        private set 
-        { 
-            _isMoving = value; 
-            animator.SetBool("isMoving", value);
-        } 
+            if (IsMoving)
+            {
+                if (IsRunning)
+                {
+                    return runSpeed;
+                }
+                else
+                {
+                    return walkSpeed;
+                }
+            }
+            else 
+            {
+                return 0;
+            }
+        }
+        
+        
     }
+    
 
-    private bool _isRuning = false;
+    [SerializeField]
+    private bool isMoving = false;
 
-    public bool IsRuning 
+    public bool IsMoving 
     { 
         get
         {
-            return _isRuning; 
+            return isMoving; 
         } 
         set 
         { 
-            _isRuning = value; 
-            animator.SetBool("isRuning", value);
+            isMoving = value; 
+            animator.SetBool(AnimationStrings.isMoving, value);
+        }
+    }
+
+    [SerializeField] 
+    private bool isRunning = false;
+
+    public bool IsRunning 
+    { 
+        get
+        {
+            return isRunning; 
         } 
+        set 
+        { 
+            isRunning = value; 
+            animator.SetBool(AnimationStrings.isRunning, value);
+        } 
+    }
+
+    public bool _isFacingRight = true;
+
+    public bool IsFacingRight 
+    { 
+        get 
+        {
+            return _isFacingRight; 
+        }
+        private set 
+        {
+            if(_isFacingRight != value)
+            {
+                transform.localScale *= new Vector2(-1, 1);
+            }
+            IsFacingRight = value;
+        }
+        
     }
 
     Rigidbody2D rb;
@@ -63,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(moveInput.x * walkSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -71,5 +121,36 @@ public class PlayerController : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
 
         IsMoving = moveInput != Vector2.zero;
+
+        SetFacingDirection(moveInput);
     }
+
+    private void SetFacingDirection(Vector2 moveInput)
+    {
+        
+        if(moveInput.x < 0)
+        {
+            transform.localScale = new Vector2(-1, 1);
+        }
+        else if(moveInput.x > 0)
+        {
+            transform.localScale = new Vector2(1, 1);
+        }
+        
+    }
+
+    public void OnRun(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            IsRunning = true;
+        }
+        else if (context.canceled)
+        {
+            IsRunning = false;
+        }
+    }
+
 }
+
+

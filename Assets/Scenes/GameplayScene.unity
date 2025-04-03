@@ -893,14 +893,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1629969298975614513, guid: 29291eda7aea3794da7d0894d93d2fc3, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6426073980909982586, guid: 29291eda7aea3794da7d0894d93d2fc3, type: 3}
-      propertyPath: walkSpeed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7033635066637652864, guid: 29291eda7aea3794da7d0894d93d2fc3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
