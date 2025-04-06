@@ -19,10 +19,12 @@ public class PlayerController : MonoBehaviour
     {
         get  
         {
-            if (IsMoving && !touchingDirections.IsOnWall)
+            if (CanMove)
             {
-                if (touchingDirections.IsGrounded)
+                if (IsMoving && !touchingDirections.IsOnWall)
                 {
+                    if (touchingDirections.IsGrounded)
+                    {
                     if (IsRunning)
                     {
                         return runSpeed;
@@ -31,14 +33,21 @@ public class PlayerController : MonoBehaviour
                     {
                         return walkSpeed;
                     }
+                    }
+
+                    else 
+                    {
+                        return airWalkSpeed;
+                    }
                 }
+            
                 else 
                 {
-                
-                return airWalkSpeed;
+                    return 0;
                 }
             }
-            else 
+            
+            else
             {
                 return 0;
             }
@@ -97,6 +106,14 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public bool CanMove 
+    {
+        get
+        {
+            return animator.GetBool(AnimationStrings.canMove);
+
+        }
+    }
     Rigidbody2D rb;
     Animator animator;
     
@@ -152,13 +169,19 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started && touchingDirections.IsGrounded)
+        if (context.started && touchingDirections.IsGrounded &&  CanMove)
         {
-            animator.SetTrigger(AnimationStrings.jump);
+            animator.SetTrigger(AnimationStrings.jumpTrigger);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
         {
-           
+            animator.SetTrigger(AnimationStrings.attackTrigger);
+            
         }
     }
 
