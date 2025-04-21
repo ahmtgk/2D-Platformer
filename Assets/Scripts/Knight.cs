@@ -3,16 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 public class Knight : MonoBehaviour
 {
     public float walkspeed = 3f;
     public float walkStopRate = 0.05f;
     public DetectionZone attackZone;
 
+
     Rigidbody2D rb;
     TouchingDirections touchingDirections;
     Animator animator;
+    Damageable damageable;
 
     public enum WalkableDirection {Right, Left}
 
@@ -69,6 +71,7 @@ public class Knight : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirections>();
         animator = GetComponent<Animator>();
+        damageable = GetComponent<Damageable>();
     }
 
     void Update()
@@ -83,14 +86,19 @@ public class Knight : MonoBehaviour
             FlipDirection();
         }
         
-        if(CanMove)
+        if(!damageable.LockVelocity)
         {
-            rb.velocity = new Vector2(walkspeed * WalkDirectionVector.x , rb.velocity.y);
+            if(CanMove)
+            {
+                rb.velocity = new Vector2(walkspeed * WalkDirectionVector.x , rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
+            }
+
         }
-        else
-        {
-            rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
-        }    
+            
     }
 
     private void FlipDirection()
@@ -109,6 +117,12 @@ public class Knight : MonoBehaviour
         }
        
     }
+
+    public void OnHit(int damage, Vector2 knockback)
+    {
+        rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+    }
+    
 }
 
 
