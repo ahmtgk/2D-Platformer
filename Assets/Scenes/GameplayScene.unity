@@ -3126,17 +3126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1574988182 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5310943005829184823, guid: a07a6d38c701e0340bd297acd572ec04, type: 3}
-  m_PrefabInstance: {fileID: 6337165398714361189}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04cb36e73ae6ddb4ba6e12f7e128894d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1719810219 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7033635066637652864, guid: 29291eda7aea3794da7d0894d93d2fc3, type: 3}
@@ -3184,38 +3173,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1636834925988577459, guid: a07a6d38c701e0340bd297acd572ec04, type: 3}
-      propertyPath: _isAlive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636834925988577459, guid: a07a6d38c701e0340bd297acd572ec04, type: 3}
-      propertyPath: invicibilityTime
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636834925988577459, guid: a07a6d38c701e0340bd297acd572ec04, type: 3}
-      propertyPath: damageableHit.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636834925988577459, guid: a07a6d38c701e0340bd297acd572ec04, type: 3}
-      propertyPath: damageableHit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1574988182}
-    - target: {fileID: 1636834925988577459, guid: a07a6d38c701e0340bd297acd572ec04, type: 3}
-      propertyPath: damageableHit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636834925988577459, guid: a07a6d38c701e0340bd297acd572ec04, type: 3}
-      propertyPath: damageableHit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnHit
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636834925988577459, guid: a07a6d38c701e0340bd297acd572ec04, type: 3}
-      propertyPath: damageableHit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Knight, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636834925988577459, guid: a07a6d38c701e0340bd297acd572ec04, type: 3}
-      propertyPath: damageableHit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 4289578651809765961, guid: a07a6d38c701e0340bd297acd572ec04, type: 3}
       propertyPath: m_Name
       value: KnightEnemy
