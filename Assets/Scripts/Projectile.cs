@@ -26,13 +26,14 @@ public class Projectile : MonoBehaviour
         
         if(damageable != null)
         {
-            Vector2 deliveredKnockback = transform.parent.localScale.x > 0 ? knockback : new Vector2(-knockback.x, knockback.y);
+            Vector2 deliveredKnockback = transform.localScale.x > 0 ? knockback : new Vector2(-knockback.x, knockback.y);
 
             bool gotHit = damageable.Hit(damage, deliveredKnockback);
-            
+
             if (gotHit)
             {
                 Debug.Log(collision.name + " hit for " + damage);
+                Destroy(gameObject);
             }
         }
     }

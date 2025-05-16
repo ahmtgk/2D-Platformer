@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
 {
+    public Transform launchPoint;
     public GameObject projectilePrefab;
 
     public void FireProjectile ()

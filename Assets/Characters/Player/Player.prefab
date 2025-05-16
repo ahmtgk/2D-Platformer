@@ -114,7 +114,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1709432900957288722}
-  - component: {fileID: 5916516014048138433}
   m_Layer: 7
   m_Name: BowAttack
   m_TagString: Untagged
@@ -137,19 +136,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7033635066637652864}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5916516014048138433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4342108058798964398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8778fd3cc5734e94fb3e92ec1d5047bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 4159459796107032993, guid: 864cdd02c32cdc34687089744d5f5468, type: 3}
 --- !u!1 &8169374038105898546
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +259,7 @@ GameObject:
   - component: {fileID: 6903454656940121814}
   - component: {fileID: 941757020264446456}
   - component: {fileID: 1523779828715849766}
+  - component: {fileID: 3170233238729698593}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -671,6 +658,20 @@ MonoBehaviour:
   _isAlive: 1
   isInvicible: 0
   invicibilityTime: 1
+--- !u!114 &3170233238729698593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8241015521994301775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8778fd3cc5734e94fb3e92ec1d5047bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  launchPoint: {fileID: 1709432900957288722}
+  projectilePrefab: {fileID: 4159459796107032993, guid: 864cdd02c32cdc34687089744d5f5468, type: 3}
 --- !u!1 &8677411064328050802
 GameObject:
   m_ObjectHideFlags: 0
