@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2006c16e1aa3642b994c7e7a768964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  moveSpeed: {x: 3, y: 0}
-  knockback: {x: 10, y: 0}
+  damage: 15
+  moveSpeed: {x: 7, y: 0}
+  knockback: {x: 2, y: 0}
 --- !u!50 &1492017744098207263
 Rigidbody2D:
   serializedVersion: 4
