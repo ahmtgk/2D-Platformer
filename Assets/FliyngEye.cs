@@ -79,7 +79,7 @@ public class FliyngEye : MonoBehaviour
     {
         Vector2 directionToWaypoint = (nextWaypoint.position - transform.position).normalized;
 
-        float distance = Vector2.Distance(directionToWaypoint, transform.position);
+        float distance = Vector2.Distance(nextWaypoint.position, transform.position);
 
         rb.velocity = directionToWaypoint * flightSpeed;
 

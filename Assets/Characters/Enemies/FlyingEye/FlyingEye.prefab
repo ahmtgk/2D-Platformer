@@ -288,7 +288,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e641a42a77becff4b97cf0d9d427d475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flightSpeed: 2
+  waypointReachedDistance: 0.1
   biteDetectionZone: {fileID: 6241621756685075928}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _hasTarget: 0
 --- !u!1 &6149599008642519299
 GameObject:
@@ -371,6 +378,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01, y: -0.1771287}
-  m_Size: {x: 1.281456, y: 1.302295}
+  m_Offset: {x: 0.0498, y: -0.1526}
+  m_Size: {x: 1.34998, y: 1.4}
   m_Direction: 0
