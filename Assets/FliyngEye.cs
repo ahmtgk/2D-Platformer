@@ -59,7 +59,7 @@ public class FliyngEye : MonoBehaviour
     {
         HasTarget = biteDetectionZone.detectedColliders.Count > 0;
     }
-    
+
     private void FixedUpdate()
     {
         if (damageable.IsAlive)
@@ -73,6 +73,10 @@ public class FliyngEye : MonoBehaviour
                 rb.velocity = Vector3.zero;
             }
         }
+        else
+        {
+            rb.gravityScale = 2f;
+        }
     }
 
     private void Flight()
@@ -82,6 +86,7 @@ public class FliyngEye : MonoBehaviour
         float distance = Vector2.Distance(nextWaypoint.position, transform.position);
 
         rb.velocity = directionToWaypoint * flightSpeed;
+        UpdateDirection();
 
         if (distance <= waypointReachedDistance)
         {
@@ -94,5 +99,25 @@ public class FliyngEye : MonoBehaviour
 
             nextWaypoint = waypoints[waypointNum];
         } 
+    }
+
+    private void UpdateDirection()
+    {
+        Vector3 locScale = transform.localScale;
+
+        if (transform.localScale.x > 0)
+        {
+            if (rb.velocity.x < 0)
+            {
+                transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
+            }
+        }
+        else
+        {
+            if (rb.velocity.x > 0)
+            {
+                transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
+            }
+        }
     }
 }
