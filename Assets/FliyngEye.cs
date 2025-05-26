@@ -8,7 +8,9 @@ public class FliyngEye : MonoBehaviour
     public float flightSpeed = 2f;
     public float waypointReachedDistance = 0.1f;
     public DetectionZone biteDetectionZone;
+    public Collider2D deathCollider;
     public List<Transform> waypoints;
+    
 
     Animator animator;
     Rigidbody2D rb;
@@ -18,7 +20,7 @@ public class FliyngEye : MonoBehaviour
     int waypointNum = 0;
 
     public bool _hasTarget = false;
-    
+
 
     public bool HasTarget
     {
@@ -34,11 +36,11 @@ public class FliyngEye : MonoBehaviour
 
     }
 
-    public bool CanMove 
+    public bool CanMove
     {
         get
         {
-            return animator.GetBool(AnimationStrings.canMove); 
+            return animator.GetBool(AnimationStrings.canMove);
         }
     }
 
@@ -52,6 +54,11 @@ public class FliyngEye : MonoBehaviour
     private void Start()
     {
         nextWaypoint = waypoints[waypointNum];
+    }
+
+    void OnEnable()
+    {
+        damageable.damageableDeath.AddListener (OnDeath);
     }
 
     // Update is called once per frame
@@ -72,10 +79,6 @@ public class FliyngEye : MonoBehaviour
             {
                 rb.velocity = Vector3.zero;
             }
-        }
-        else
-        {
-            rb.gravityScale = 2f;
         }
     }
 
@@ -98,7 +101,7 @@ public class FliyngEye : MonoBehaviour
             }
 
             nextWaypoint = waypoints[waypointNum];
-        } 
+        }
     }
 
     private void UpdateDirection()
@@ -119,5 +122,12 @@ public class FliyngEye : MonoBehaviour
                 transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
             }
         }
+    }
+
+    public void OnDeath()
+    {   
+        rb.gravityScale = 2f;
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        deathCollider.enabled = true;   
     }
 }
