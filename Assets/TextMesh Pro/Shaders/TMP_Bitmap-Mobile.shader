@@ -1,5 +1,6 @@
 Shader "TextMeshPro/Mobile/Bitmap" {
 
+
 Properties {
 	_MainTex		("Font Atlas", 2D) = "white" {}
 	[HDR]_Color		("Text Color", Color) = (1,1,1,1)
