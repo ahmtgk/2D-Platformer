@@ -15,6 +15,11 @@ public class HealthBar : MonoBehaviour
     void Awake()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            Debug.LogError("Player GameObject not found. Make sure the player has the 'Player' tag.");
+        }
+
         playerDamageable = player.GetComponent<Damageable>();
     }
 
@@ -25,14 +30,24 @@ public class HealthBar : MonoBehaviour
         healthBarText.text = "HP " + playerDamageable.Health + "/" + playerDamageable.MaxHealth;
     }
 
-    private float CalculateSliderPercentage(int currentHealth, int MaxHealth)
+    private void OnEnable()
     {
-        return currentHealth / MaxHealth;
+        playerDamageable.healthChanged.AddListener(OnPlayerHealthChanged);
     }
 
-    // Update is called once per frame
-    void Update() 
+    private void OnDisable()
     {
-        
+        playerDamageable.healthChanged.RemoveListener(OnPlayerHealthChanged);
+    }
+
+    private float CalculateSliderPercentage(float currentHealth, float maxHealth)
+    {
+        return currentHealth / maxHealth;
+    }
+
+    private void OnPlayerHealthChanged(int newHealth, int maxHealth)
+    {
+        healthSlider.value = CalculateSliderPercentage(newHealth, maxHealth);
+        healthBarText.text = "HP " + newHealth + "/" + maxHealth;
     }
 }

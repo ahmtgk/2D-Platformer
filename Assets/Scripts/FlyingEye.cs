@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FliyngEye : MonoBehaviour
+public class FlyingEye : MonoBehaviour
 {
     public float flightSpeed = 2f;
     public float waypointReachedDistance = 0.1f;
