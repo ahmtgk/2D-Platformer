@@ -266,6 +266,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _maxHealth: 50
   _health: 50
   _isAlive: 1
@@ -309,8 +312,6 @@ MonoBehaviour:
   biteDetectionZone: {fileID: 6241621756685075928}
   deathCollider: {fileID: 7194410500180741275}
   waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   _hasTarget: 0
